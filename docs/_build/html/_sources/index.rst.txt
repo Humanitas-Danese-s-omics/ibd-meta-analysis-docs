@@ -3,19 +3,61 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to TaMMA's documentation!
+Welcome to TaMMA's documentation
 ======================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
-# test title
-test text
+What's the goal
+########
 
-Indices and tables
-==================
+bla bla bla
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Quick start
+########
+
+bla bla bla
+
+Multidimensional scaling visualization with UMAP
+########
+
+bla bla bla
+
+Single feature expression/abundance visualization with Box plots
+########
+
+bla bla bla
+
+Differential expression/abundance visualization with MA plot
+########
+
+bla bla bla
+
+Gene ontology functional enrichment visualization with GO plot 
+########
+
+bla bla bla
+
+The tabs
+########
+
+Summary
+------------------
+
+Metadata
+------------------
+
+Box plots
+------------------
+
+DGE table
+------------------
+
+GO table
+------------------
+
+Literature
+------------------
+
