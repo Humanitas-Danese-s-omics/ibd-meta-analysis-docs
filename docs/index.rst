@@ -216,7 +216,7 @@ The search area is flexible. It is case unsensitive and you can provide genes se
 
     Like for :ref:`boxplots`, while the selected metadata dropdown value (see :ref:`color_by_dropdown`) is **Condition**, it is possible to group, the box plots by condition using the appropriate switch that is located below the search button. If the selected metadata is not **Condition**, it will not be possible to use this feature.
 
-.. _dge_table:
+.. _dge_table: 
 
 DGE table
 ------------------
