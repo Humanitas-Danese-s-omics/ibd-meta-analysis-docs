@@ -21,6 +21,8 @@ Welcome to IBD TaMMA's documentation
 Quick start
 ======================================
 
+TaMMA can be found at https://ibd-meta-analysis.herokuapp.com/.
+
 TaMMA is designed to be as simple, interactive and user-friendly as possible. The web app is divided into 3 different sections: 
 
 - the top one, composed of dropdowns and by a unique legend, can be seen as the **input** section where all the general parameters are read to populate plots and tables.
@@ -194,6 +196,8 @@ Summary
 In this tab, a schematic representation of the analysis workflow is shown.
 The sankey plot is used to display the relationships between the samples and their metadata. By hovering the mouse on a specific location it is possible to see the number of samples having that feature, for example the *CD* metadata and the *Ileum* metadata are present in 1,380 samples.
 
+.. _metadata:
+
 Metadata
 ------------------
 
@@ -253,3 +257,12 @@ Literature
 ------------------
 
 Here, we collected a series of previous scientific evidence that is validated in TaMMA. The plots here are not related to any of the dropdowns on the top of the website and are not interactive.
+
+The data behind it
+======================================
+
+The complete list of raw data analyzed can be fount in the :ref:`metadata` tab.
+
+The result tables used for the plots are stored in `GitHub <https://github.com/Humanitas-Danese-s-omics/ibd-meta-analysis-data>`_.
+
+NGS dark matter mentioned in the manuscript are stored in `Harvard Dataverse <https://dataverse.harvard.edu/dataverse/tamma-dark-matter>`_
