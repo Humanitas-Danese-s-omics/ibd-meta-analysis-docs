@@ -266,3 +266,8 @@ The complete list of raw data analyzed can be fount in the :ref:`metadata` tab.
 The result tables used for the plots are stored in `GitHub <https://github.com/Humanitas-Danese-s-omics/ibd-meta-analysis-data>`_.
 
 NGS dark matter mentioned in the manuscript are stored in `Harvard Dataverse <https://dataverse.harvard.edu/dataverse/tamma-dark-matter>`_
+
+Report a bug
+======================================
+
+Found a bug or simple have a feature request to improve TaMMA? Please tell us `here <https://github.com/Humanitas-Danese-s-omics/ibd-meta-analysis-data/issues>`_.
