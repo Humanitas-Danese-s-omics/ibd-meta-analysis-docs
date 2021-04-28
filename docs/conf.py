@@ -19,7 +19,7 @@ import sys
 # -- Project information -----------------------------------------------------
 
 project = 'IBD TaMMA'
-copyright = '2021, Luca Massimino, Luigi Lamparelli'
+copyright = '2021, Luca Massimino, Luigi Lamparelli, Federica Ungaro'
 author = 'Luca Massimino'
 # author = 'Luigi Lamparelli'
 
