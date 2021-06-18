@@ -1,0 +1,2 @@
+For documentation: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
+For building: "make html" in "~/github_repo/ibd-meta-analysis-docs/docs" path
