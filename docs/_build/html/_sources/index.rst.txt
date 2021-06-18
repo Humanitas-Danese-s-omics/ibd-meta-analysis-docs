@@ -25,6 +25,7 @@ TaMMA can be found at https://ibd-meta-analysis.herokuapp.com/.
 
 TaMMA is designed to be as simple, interactive and user-friendly as possible. The web app is divided into 3 different sections: 
 
+
 - the top one, composed of dropdowns and by a unique legend, can be seen as the **input** section where all the general parameters are read to populate plots and tables.
 
 .. image:: ../images/quickstart1.png
@@ -49,6 +50,7 @@ TaMMA is designed to be as simple, interactive and user-friendly as possible. Th
   :align: center
   :target: ../../../images/quickstart3.png
 
+
 Around the website, there are also some plot-/table-specific input elements (dropdowns, buttons, switches etc.) that are referred only to the plot/table near this element. In addition, each component of TaMMA has a |info| icon that will show you a tooltip explaining the element by hovering the mouse on it.
 
 .. |info| image:: ../images/info.png
@@ -57,7 +59,6 @@ Around the website, there are also some plot-/table-specific input elements (dro
   :align: middle
 
 Since TaMMA is completely interactive, any change in the input section will result in the updating of the plots all over the page in accordance with the new parameters. Some changes will trigger the update automatically (e.g., changing the value of a dropdown), others will require the user explicit command by clicking on an **Update plot** button.
-
 All the plots are produced using the `Plotly graphing libraries <https://plotly.com/graphing-libraries/>`_, which create interactive plots, where you can freely explore each graph with a series of different operations like zooming, clicking, hovering on elements, etc.
 Each plot has on the top a toolbar that appear when your mouse pointer is above the graph and that allow you to get more advanced options. For example, it is possible to automatically download the plot by clicking on the camera button in this toolbar.
 Finally, the lengend positioned under the dropdowns is also interactive. You can select/unselect features of interest by simply clicking on them. By double-clicking an element you can isolate a specific feature, or select all of them if some are unselected.
@@ -72,24 +73,16 @@ Multidimensional scaling visualization with UMAP
 
 Multidimensional scaling by Uniform Manifold Approximation and Projection (UMAP) consists of the low-dimensional (UMAP1 and UMAP2) embedding of high-dimensional data (e.g., 55k genes in the human transcriptome) and is, therefore, a powerful visualization to get similarities and differences between the samples.
 
-In TaMMA, you can find the same UMAP decorated in two different ways, where dots represent the different samples. On the left dots are colored by a specific user-selected metadata (see :ref:`color_by_dropdown`), while on the right dots are colored by expresion/abundance levels (see :ref:`expression_dropdown`).
-These two plots can be used to search for specific clusters of samples that share particular metadata (on the left), or expression/abundance level (on the right) at a sample level. Samples can be filtered according to the **Color by** metadata by selecting the desired features in the legend above, and then by clicking on the **Update plot** button.
+In TaMMA, you can find the same UMAP decorated in two different ways, where dots represent the different samples. On the left dots are colored by a specific user-selected metadata (see :ref:`color_by_dropdown`), while on the right dots are colored by gene expresion or order/family/species abundance levels (see :ref:`expression_dropdown`).
+These two plots can be used to search for specific clusters of samples that share particular metadata (on the left), or expression/abundance level (on the right) at a sample level. Samples can be filtered according to the **Color by** dropdown or by selecting the desired features in the legend below and then by clicking on the **Update plot** button.
 It is always possible to zoom in by clicking and dragging an area on the plot. To reset the zoom you can either double click on an empty space in the graph or click on the **Autoscale** button in the toolbar on the top of the plot. 
-In the title, it is possible to see how many samples are displayed (n=xxxx), the multidimensional scaling used and the metadata/gene/order/family/species used for coloring the dots. 
-
-Since the metadata UMAP, by default, will not show its legend (it is controlled by the general legend above), there is a switch that allows you to show the legend also on the bottom of the umap for plotting purposes. This legend will only show the selected elements in the main legend and is not interactive. 
-
-.. _boxplots:
-
-Single feature expression/abundance visualization with Box plots
------------------------------------------------------------------
-
-Box plots are useful to compare, among different groups, the expression/abundance level of what is selected in the **Host gene**/**Order**/**Family**/**Species** dropdown (see :ref:`gene_species_dropdown`). By default, all the elements in the legend are shown although it is possible to show only the desired groups through the legend.
-When the **Comparison only** switch is on, only the two conditions of the selected comparison will be shown (see :ref:`contrast_dropdown`).
+In the title, it is possible to see how many samples are displayed (n=xxxx), the multidimensional scaling used (human transcriptome, archaeome, bacteriome, eukaryome/mycome, virome) and the metadata/gene/order/family/species used for coloring the dots. 
 
 .. note::
 
-    While the selected metadata dropdown value (see :ref:`color_by_dropdown`) is **Condition**, it is possible to group the box plots by the tissue using the appropriate switch located above the plot. If the selected metadata is not **Condition**, it will not be possible to use this feature.
+    When a non-human trascriptome multidimensional scaling is selected, samples for which the metatranscriptomics is not available (e.g. samples with just poly-A enrichment as library preparation as an example) will be filtered out, also resulting in changing in the legend where features related only on human transcriptome are filtered out. This have also implication on boxplots where samples will be filtered out too, see :ref:`boxplots`.
+
+Since the metadata UMAP, by default, will not show its legend (it is controlled by the general legend above), there is a switch that allows you to show the legend also on the bottom of the umap for plotting purposes. This legend will only show the selected elements in the main legend and is not interactive. 
 
 .. _ma_plot:
 
@@ -104,6 +97,30 @@ In the case of a human expression dataset, it is possible to explore the differe
 In any other case, orders, families, or species are plotted instead of human genes.
 
 If you are interested in a particular dot within the plot, it is possible to click on it to automatically select it within the Host gene/Order/Family/Species dropdown (see :ref:`gene_species_dropdown`), updating all the related plots accordingly.
+
+.. _boxplots:
+
+Single feature expression/abundance visualization with Box plots
+-----------------------------------------------------------------
+
+Box plots are useful to compare, among different groups, the expression/abundance level of what is selected in the **Host gene**/**Order**/**Family**/**Species** dropdown (see :ref:`gene_species_dropdown`). By default, all the elements in the legend are shown although it is possible to show only the desired groups through the legend.
+When the **Comparison only** switch is on, only the two conditions of the selected comparison will be shown (see :ref:`contrast_dropdown`).
+
+.. note::
+
+    While the selected metadata dropdown value (see :ref:`color_by_dropdown`) is **Condition**, it is possible to group the box plots by the tissue using the appropriate switch located above the plot. If the selected metadata is not **Condition**, it will not be possible to use this feature.
+
+Under the plots is located a switch entitled "Multiple gene visualization". By activating this switch, a new section will appear below; in this new section you can easily plot many series of box plots of different features depending on the :ref:`expression_dropdown` (human genes if **Human** is selected, or orders/families/species if another value is selected). For performance and usability reasons, it is possible to plot up to 10 elements at a time.
+To select the elements to plot, you have two different options:
+
+- search and manually select within the dropdown one element at time
+- search many elements in one click by using the text area below the dropdown
+
+The search area is flexible. It is case-insensitive and you can provide genes separated by whitespaces, commas, or semicolons. For other elements, it is still case-insensitive but you need to put one item per line. If one or more elements are not found, a message will appear below it indicating missing matches. In these cases, we invite you to check for spelling errors, typos, or to directly search in the dropdown. 
+
+.. note::
+
+    Like for the boxplots in the main panel, while the selected metadata dropdown value (see :ref:`color_by_dropdown`) is **Condition**, it is possible to group the box plots by condition using the appropriate switch that is located below the search button. If the selected metadata is not **Condition**, it will not be possible to use this feature.
 
 .. _go_plot:
 
@@ -150,27 +167,36 @@ Host gene/Order/Family/Species
 
 This dropdown can contain different elements, depending on the expression dropdown value:
 
-- Human: will contain 55,478 unique human genes (`GENCODE v35 gene annotations <https://www.gencodegenes.org/>`_).
+
+- Human: will contain 55,478 unique human genes (`GENCODE v35 gene annotations <https://www.gencodegenes.org/>`_)
 - Archaea by... : will contain only archaeal orders/families/species, depending on the selected classification level 
 - Bacteria by... : will contain only bacterial orders/families/species
 - Eukaryota by... : will contain only eukaryotic orders/families/species
 - Viruses by... : will contain only viral orders/families/species
 
+
 .. note::
 
     The selected element will be used to color the samples in the expression UMAP, for the boxplots, and will be highlighted in the MA plot. 
 
-Tissue
-------------------
+Filter comparison by
+-----------------------
 
-This dropdown is used to filter the following dropdown (Comparison) by a given tissue.
+This dropdown is used to filter the following dropdown (Comparison). It is possible to filter for tissue or fro group (disease) or to not filter at all.
 
 .. _contrast_dropdown:
 
 Comparison
 ------------------
 
-This dropdown selects the comparison used for the differential gene expression results and the resulting gene ontology enrichment analysis. Thus, changing this dropdown will update both MA and GO plots, and their relative tables. The comparison follows the scheme of **Tissue Group A vs Tissue Group B**. As mentioned before, the comparisons can be filtered by **Tissue**. 
+This dropdown selects the comparison used for the differential gene expression results and the resulting gene ontology enrichment analysis. Thus, changing this dropdown will update both MA and GO plots, and their relative tables. The comparison follows the scheme of **Tissue Group A vs Tissue Group B**. As mentioned before, the comparisons can be filtered by the precent dropdown.
+There are two types of different comparisons:
+
+- Same tissue, different group, filtering by tissue will show only these contrast with the specific tissue selected
+
+- Same group, different tissue, filtering by group will show only these contrast with the specific group selected
+
+It is always possible to search manually by writing inside the dropdown.
 
 .. note::
 
@@ -190,35 +216,22 @@ The tabs
 
 In the bottom part of the web app, there are several tabs with other secondary content, spacing from plots, links, images to exportable tables. 
 
-Summary
-------------------
+.. _summary_and_metadata:
+
+Summary and metadata
+------------------------
 
 In this tab, a schematic representation of the analysis workflow is shown.
 The sankey plot is used to display the relationships between the samples and their metadata. By hovering the mouse on a specific location it is possible to see the number of samples having that feature, for example the *CD* metadata and the *Ileum* metadata are present in 1,380 samples.
+Below, there is the full metadata table used to populate the :ref:`color_by_dropdown` plus other info like, for example, the GSE link to the specific study on `NCBI GEO <https://www.ncbi.nlm.nih.gov/geo/>`_. The table has native sorting and filtering (by exact match) interactivity options.
 
-.. _metadata:
+Differential analysis
+------------------------
 
-Metadata
-------------------
+This tab have two different sub-tabs:
 
-In this tab, there is the full metadata table used to populate the :ref:`color_by_dropdown` plus other info like, for example, the GSE link to the specific study on `NCBI GEO <https://www.ncbi.nlm.nih.gov/geo/>`_. The table has native sorting and filtering (by exact match) interactivity options.
-
-.. _multiboxplots_tab:
-
-Box plots
-------------------
-
-In this tab, you can easily plot many series of box plots of different features depending on the :ref:`expression_dropdown` (human genes if **Human** is selected, or orders/families/species if another value is selected). For performance and usability reasons, it is possible to plot up to 10 elements at a time.
-To select the elements to plot, you have two different options:
-
-- search and manually select within the dropdown one element at time
-- search many elements in one click by using the text area below the dropdown
-
-The search area is flexible. It is case-insensitive and you can provide genes separated by whitespaces, commas, or semicolons. For other elements, it is still case-insensitive but you need to put one item per line. If one or more elements are not found, a message will appear below it indicating missing matches. In these cases, we invite you to check for spelling errors, typos, or to directly search in the dropdown. 
-
-.. note::
-
-    Like for :ref:`boxplots`, while the selected metadata dropdown value (see :ref:`color_by_dropdown`) is **Condition**, it is possible to group, the box plots by condition using the appropriate switch that is located below the search button. If the selected metadata is not **Condition**, it will not be possible to use this feature.
+- DGE table
+- GO table
 
 .. _dge_table: 
 
@@ -242,7 +255,7 @@ It is possible to easily download both the full and filtered tables by clicking 
 
 .. note::
 
-    Similar to :ref:`ma_plot`, clicking on a Gene/Order/Family/Species cell will change the selected element in the right dropdown (see :ref:`gene_species_dropdown`), thus updating all the relevant plots. 
+    Similar to :ref:`ma_plot`, clicking on a Gene/Order/Family/Species cell in the table will change the selected element in the right dropdown (see :ref:`gene_species_dropdown`), thus updating all the relevant plots. 
 
 .. _go_table:
 
@@ -253,21 +266,26 @@ Here, the gene ontology functional enrichement analysis results are shown, for t
 
 As explained in the :ref:`go_table`, this table can be filtered using the GO plot keyword search bar: the GO categories plotted will be those displayed in the table. You can easily download both the full or the filtered table using the download buttons.
 
-Literature
+Insights
 ------------------
 
-Here, we collected a series of previous scientific evidence that is validated in TaMMA. The plots here are not related to any of the dropdowns on the top of the website and are not interactive.
+Here, we collected a series of previous scientific evidence that is validated in TaMMA and also new evidence found using TaMMA. These two categories are collected in two relative sub-tabs, "Old evidence from the literature confirmed by TaMMA" and "New evidence by TaMMA". The plots here are not related to any of the dropdowns on the top of the website and are not interactive.
 
 The data behind it
 ======================================
 
-The complete list of raw data analyzed can be fount in the :ref:`metadata` tab.
+The complete list of raw data analyzed, with the associated metadata, can be fount in the :ref:`summary_and_metadata` tab.
 
 The result tables used for the plots are stored in `GitHub <https://github.com/Humanitas-Danese-s-omics/ibd-meta-analysis-data>`_.
 
 NGS dark matter mentioned in the manuscript are stored in `Harvard Dataverse <https://dataverse.harvard.edu/dataverse/tamma-dark-matter>`_
 
-Report a bug
-======================================
+Report a bug, suggestions and feature requests
+===================================================
 
 Found a bug or simple have a feature request to improve TaMMA? Please tell us `here <https://github.com/Humanitas-Danese-s-omics/ibd-meta-analysis-data/issues>`_.
+
+Future development
+===================================================
+
+In the future, as new datasets will be published, we will update TaMMA by adding these as soon as possible. Also, in the future, metagenomic data will be integrated in the platform. 

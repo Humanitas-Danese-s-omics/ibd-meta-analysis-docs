@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Welcome to IBD TaMMA’s documentation &mdash; IBD TaMMA</title>
@@ -13,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +32,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -85,8 +89,8 @@
 <li><a class="reference internal" href="#quick-start">Quick start</a></li>
 <li><a class="reference internal" href="#the-plots">The plots</a><ul>
 <li><a class="reference internal" href="#multidimensional-scaling-visualization-with-umap">Multidimensional scaling visualization with UMAP</a></li>
-<li><a class="reference internal" href="#single-feature-expression-abundance-visualization-with-box-plots">Single feature expression/abundance visualization with Box plots</a></li>
 <li><a class="reference internal" href="#differential-expression-abundance-visualization-with-ma-plot">Differential expression/abundance visualization with MA plot</a></li>
+<li><a class="reference internal" href="#single-feature-expression-abundance-visualization-with-box-plots">Single feature expression/abundance visualization with Box plots</a></li>
 <li><a class="reference internal" href="#gene-ontology-functional-enrichment-visualization-with-go-plot">Gene ontology functional enrichment visualization with GO plot</a></li>
 </ul>
 </li>
@@ -95,22 +99,22 @@
 <li><a class="reference internal" href="#color-by">Color by</a></li>
 <li><a class="reference internal" href="#expression">Expression</a></li>
 <li><a class="reference internal" href="#host-gene-order-family-species">Host gene/Order/Family/Species</a></li>
-<li><a class="reference internal" href="#tissue">Tissue</a></li>
+<li><a class="reference internal" href="#filter-comparison-by">Filter comparison by</a></li>
 <li><a class="reference internal" href="#comparison">Comparison</a></li>
 <li><a class="reference internal" href="#fdr">FDR</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-tabs">The tabs</a><ul>
-<li><a class="reference internal" href="#summary">Summary</a></li>
-<li><a class="reference internal" href="#metadata">Metadata</a></li>
-<li><a class="reference internal" href="#box-plots">Box plots</a></li>
+<li><a class="reference internal" href="#summary-and-metadata">Summary and metadata</a></li>
+<li><a class="reference internal" href="#differential-analysis">Differential analysis</a></li>
 <li><a class="reference internal" href="#dge-table">DGE table</a></li>
 <li><a class="reference internal" href="#go-table">GO table</a></li>
-<li><a class="reference internal" href="#literature">Literature</a></li>
+<li><a class="reference internal" href="#insights">Insights</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-data-behind-it">The data behind it</a></li>
-<li><a class="reference internal" href="#report-a-bug">Report a bug</a></li>
+<li><a class="reference internal" href="#report-a-bug-suggestions-and-feature-requests">Report a bug, suggestions and feature requests</a></li>
+<li><a class="reference internal" href="#future-development">Future development</a></li>
 </ul>
 </div>
             
@@ -181,12 +185,12 @@
   <img alt="IBD TaMMA logo" src="_images/logo.png" />
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="welcome-to-ibd-tamma-s-documentation">
+<section id="welcome-to-ibd-tamma-s-documentation">
 <h1>Welcome to IBD TaMMA’s documentation<a class="headerlink" href="#welcome-to-ibd-tamma-s-documentation" title="Permalink to this headline">¶</a></h1>
 <img alt="IBD TaMMA workflow" src="_images/workflow.png" />
 <p><a class="reference external" href="https://www.omim.org/entry/266600">Inflammatory bowel disease (IBD)</a>, including Ulcerative Colitis (UC) and Crohn’s Disease (CD), is a multifaceted chronic inflammatory gut disorder where uncontrolled, resolution-failing inflammation and intestinal dysbiosis are the main traits. To boost the better comprehension of the disease, a high number of computational biology studies has been finalized so far producing numerous RNA sequencing (RNA-Seq) data. Nevertheless, no comparison among the studies has been possible because of the experimental variability and different data analysis approaches. Therefore, to exploit these efforts made over the years in the field of Next Generation Sequencing, we here introduce the IBD Transcriptome and Metatranscriptome Meta-Analysis (IBD TaMMA) platform, a comprehensive survey of 3,853 publicly available RNA-Seq datasets from 26 independent studies performed on IBD-derived and control samples across different tissues, all analyzed with the same computational pipeline and batch corrected for data harmonization and simultaneous comparison.</p>
-</div>
-<div class="section" id="quick-start">
+</section>
+<section id="quick-start">
 <h1>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
 <p>TaMMA can be found at <a class="reference external" href="https://ibd-meta-analysis.herokuapp.com/">https://ibd-meta-analysis.herokuapp.com/</a>.</p>
 <p>TaMMA is designed to be as simple, interactive and user-friendly as possible. The web app is divided into 3 different sections:</p>
@@ -203,24 +207,36 @@
 </ul>
 <a class="reference external image-reference" href="../../../images/quickstart3.png"><img alt="quickstart_bottom" class="align-center" src="_images/quickstart3.png" style="width: 50%;" /></a>
 <p>Around the website, there are also some plot-/table-specific input elements (dropdowns, buttons, switches etc.) that are referred only to the plot/table near this element. In addition, each component of TaMMA has a <img alt="info" class="align-middle" src="_images/info.png" style="width: 2%;" /> icon that will show you a tooltip explaining the element by hovering the mouse on it.</p>
-<p>Since TaMMA is completely interactive, any change in the input section will result in the updating of the plots all over the page in accordance with the new parameters. Some changes will trigger the update automatically (e.g., changing the value of a dropdown), others will require the user explicit command by clicking on an <strong>Update plot</strong> button.</p>
-<p>All the plots are produced using the <a class="reference external" href="https://plotly.com/graphing-libraries/">Plotly graphing libraries</a>, which create interactive plots, where you can freely explore each graph with a series of different operations like zooming, clicking, hovering on elements, etc.
+<p>Since TaMMA is completely interactive, any change in the input section will result in the updating of the plots all over the page in accordance with the new parameters. Some changes will trigger the update automatically (e.g., changing the value of a dropdown), others will require the user explicit command by clicking on an <strong>Update plot</strong> button.
+All the plots are produced using the <a class="reference external" href="https://plotly.com/graphing-libraries/">Plotly graphing libraries</a>, which create interactive plots, where you can freely explore each graph with a series of different operations like zooming, clicking, hovering on elements, etc.
 Each plot has on the top a toolbar that appear when your mouse pointer is above the graph and that allow you to get more advanced options. For example, it is possible to automatically download the plot by clicking on the camera button in this toolbar.
 Finally, the lengend positioned under the dropdowns is also interactive. You can select/unselect features of interest by simply clicking on them. By double-clicking an element you can isolate a specific feature, or select all of them if some are unselected.</p>
 <p>A more detailed explanation of all sections and elements is listed in this documentation.</p>
-</div>
-<div class="section" id="the-plots">
+</section>
+<section id="the-plots">
 <h1>The plots<a class="headerlink" href="#the-plots" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="multidimensional-scaling-visualization-with-umap">
+<section id="multidimensional-scaling-visualization-with-umap">
 <h2>Multidimensional scaling visualization with UMAP<a class="headerlink" href="#multidimensional-scaling-visualization-with-umap" title="Permalink to this headline">¶</a></h2>
 <p>Multidimensional scaling by Uniform Manifold Approximation and Projection (UMAP) consists of the low-dimensional (UMAP1 and UMAP2) embedding of high-dimensional data (e.g., 55k genes in the human transcriptome) and is, therefore, a powerful visualization to get similarities and differences between the samples.</p>
-<p>In TaMMA, you can find the same UMAP decorated in two different ways, where dots represent the different samples. On the left dots are colored by a specific user-selected metadata (see <a class="reference internal" href="#color-by-dropdown"><span class="std std-ref">Color by</span></a>), while on the right dots are colored by expresion/abundance levels (see <a class="reference internal" href="#expression-dropdown"><span class="std std-ref">Expression</span></a>).
-These two plots can be used to search for specific clusters of samples that share particular metadata (on the left), or expression/abundance level (on the right) at a sample level. Samples can be filtered according to the <strong>Color by</strong> metadata by selecting the desired features in the legend above, and then by clicking on the <strong>Update plot</strong> button.
+<p>In TaMMA, you can find the same UMAP decorated in two different ways, where dots represent the different samples. On the left dots are colored by a specific user-selected metadata (see <a class="reference internal" href="#color-by-dropdown"><span class="std std-ref">Color by</span></a>), while on the right dots are colored by gene expresion or order/family/species abundance levels (see <a class="reference internal" href="#expression-dropdown"><span class="std std-ref">Expression</span></a>).
+These two plots can be used to search for specific clusters of samples that share particular metadata (on the left), or expression/abundance level (on the right) at a sample level. Samples can be filtered according to the <strong>Color by</strong> dropdown or by selecting the desired features in the legend below and then by clicking on the <strong>Update plot</strong> button.
 It is always possible to zoom in by clicking and dragging an area on the plot. To reset the zoom you can either double click on an empty space in the graph or click on the <strong>Autoscale</strong> button in the toolbar on the top of the plot.
-In the title, it is possible to see how many samples are displayed (n=xxxx), the multidimensional scaling used and the metadata/gene/order/family/species used for coloring the dots.</p>
-<p>Since the metadata UMAP, by default, will not show its legend (it is controlled by the general legend above), there is a switch that allows you to show the legend also on the bottom of the umap for plotting purposes. This legend will only show the selected elements in the main legend and is not interactive.</p>
+In the title, it is possible to see how many samples are displayed (n=xxxx), the multidimensional scaling used (human transcriptome, archaeome, bacteriome, eukaryome/mycome, virome) and the metadata/gene/order/family/species used for coloring the dots.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When a non-human trascriptome multidimensional scaling is selected, samples for which the metatranscriptomics is not available (e.g. samples with just poly-A enrichment as library preparation as an example) will be filtered out, also resulting in changing in the legend where features related only on human transcriptome are filtered out. This have also implication on boxplots where samples will be filtered out too, see <a class="reference internal" href="#boxplots"><span class="std std-ref">Single feature expression/abundance visualization with Box plots</span></a>.</p>
 </div>
-<div class="section" id="single-feature-expression-abundance-visualization-with-box-plots">
+<p>Since the metadata UMAP, by default, will not show its legend (it is controlled by the general legend above), there is a switch that allows you to show the legend also on the bottom of the umap for plotting purposes. This legend will only show the selected elements in the main legend and is not interactive.</p>
+</section>
+<section id="differential-expression-abundance-visualization-with-ma-plot">
+<span id="ma-plot"></span><h2>Differential expression/abundance visualization with MA plot<a class="headerlink" href="#differential-expression-abundance-visualization-with-ma-plot" title="Permalink to this headline">¶</a></h2>
+<p>MA plots are very useful for the visual representation of differential analyses of omics-derived data. They show sample dispersion in accordance with the log2 fold change between the two conditions of interest (M) and the average expression (A).</p>
+<p>This plot shows either the differential gene expression (in case the Expression dropdown is set to <strong>Human</strong>, see <a class="reference internal" href="#expression-dropdown"><span class="std std-ref">Expression</span></a>) or the differential order/family/species abundance (in case the Expression dropdown is set to any non-human value).</p>
+<p>In the case of a human expression dataset, it is possible to explore the differential gene expression results for a specific comparison. Given a specific stringency (see <a class="reference internal" href="#stringecy-dropdown"><span class="std std-ref">FDR</span></a>), up- and down-regulated genes are colored in red or blue, respectively. On the right by clicking on the button <strong>Show gene statistics</strong> it is possible to highlight the selected gene and display its related data and statistics.
+In any other case, orders, families, or species are plotted instead of human genes.</p>
+<p>If you are interested in a particular dot within the plot, it is possible to click on it to automatically select it within the Host gene/Order/Family/Species dropdown (see <a class="reference internal" href="#gene-species-dropdown"><span class="std std-ref">Host gene/Order/Family/Species</span></a>), updating all the related plots accordingly.</p>
+</section>
+<section id="single-feature-expression-abundance-visualization-with-box-plots">
 <span id="boxplots"></span><h2>Single feature expression/abundance visualization with Box plots<a class="headerlink" href="#single-feature-expression-abundance-visualization-with-box-plots" title="Permalink to this headline">¶</a></h2>
 <p>Box plots are useful to compare, among different groups, the expression/abundance level of what is selected in the <strong>Host gene</strong>/<strong>Order</strong>/<strong>Family</strong>/<strong>Species</strong> dropdown (see <a class="reference internal" href="#gene-species-dropdown"><span class="std std-ref">Host gene/Order/Family/Species</span></a>). By default, all the elements in the legend are shown although it is possible to show only the desired groups through the legend.
 When the <strong>Comparison only</strong> switch is on, only the two conditions of the selected comparison will be shown (see <a class="reference internal" href="#contrast-dropdown"><span class="std std-ref">Comparison</span></a>).</p>
@@ -228,16 +244,19 @@ When the <strong>Comparison only</strong> switch is on, only the two conditions 
 <p class="admonition-title">Note</p>
 <p>While the selected metadata dropdown value (see <a class="reference internal" href="#color-by-dropdown"><span class="std std-ref">Color by</span></a>) is <strong>Condition</strong>, it is possible to group the box plots by the tissue using the appropriate switch located above the plot. If the selected metadata is not <strong>Condition</strong>, it will not be possible to use this feature.</p>
 </div>
+<p>Under the plots is located a switch entitled “Multiple gene visualization”. By activating this switch, a new section will appear below; in this new section you can easily plot many series of box plots of different features depending on the <a class="reference internal" href="#expression-dropdown"><span class="std std-ref">Expression</span></a> (human genes if <strong>Human</strong> is selected, or orders/families/species if another value is selected). For performance and usability reasons, it is possible to plot up to 10 elements at a time.
+To select the elements to plot, you have two different options:</p>
+<ul class="simple">
+<li><p>search and manually select within the dropdown one element at time</p></li>
+<li><p>search many elements in one click by using the text area below the dropdown</p></li>
+</ul>
+<p>The search area is flexible. It is case-insensitive and you can provide genes separated by whitespaces, commas, or semicolons. For other elements, it is still case-insensitive but you need to put one item per line. If one or more elements are not found, a message will appear below it indicating missing matches. In these cases, we invite you to check for spelling errors, typos, or to directly search in the dropdown.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Like for the boxplots in the main panel, while the selected metadata dropdown value (see <a class="reference internal" href="#color-by-dropdown"><span class="std std-ref">Color by</span></a>) is <strong>Condition</strong>, it is possible to group the box plots by condition using the appropriate switch that is located below the search button. If the selected metadata is not <strong>Condition</strong>, it will not be possible to use this feature.</p>
 </div>
-<div class="section" id="differential-expression-abundance-visualization-with-ma-plot">
-<span id="ma-plot"></span><h2>Differential expression/abundance visualization with MA plot<a class="headerlink" href="#differential-expression-abundance-visualization-with-ma-plot" title="Permalink to this headline">¶</a></h2>
-<p>MA plots are very useful for the visual representation of differential analyses of omics-derived data. They show sample dispersion in accordance with the log2 fold change between the two conditions of interest (M) and the average expression (A).</p>
-<p>This plot shows either the differential gene expression (in case the Expression dropdown is set to <strong>Human</strong>, see <a class="reference internal" href="#expression-dropdown"><span class="std std-ref">Expression</span></a>) or the differential order/family/species abundance (in case the Expression dropdown is set to any non-human value).</p>
-<p>In the case of a human expression dataset, it is possible to explore the differential gene expression results for a specific comparison. Given a specific stringency (see <a class="reference internal" href="#stringecy-dropdown"><span class="std std-ref">FDR</span></a>), up- and down-regulated genes are colored in red or blue, respectively. On the right by clicking on the button <strong>Show gene statistics</strong> it is possible to highlight the selected gene and display its related data and statistics.
-In any other case, orders, families, or species are plotted instead of human genes.</p>
-<p>If you are interested in a particular dot within the plot, it is possible to click on it to automatically select it within the Host gene/Order/Family/Species dropdown (see <a class="reference internal" href="#gene-species-dropdown"><span class="std std-ref">Host gene/Order/Family/Species</span></a>), updating all the related plots accordingly.</p>
-</div>
-<div class="section" id="gene-ontology-functional-enrichment-visualization-with-go-plot">
+</section>
+<section id="gene-ontology-functional-enrichment-visualization-with-go-plot">
 <span id="go-plot"></span><h2>Gene ontology functional enrichment visualization with GO plot<a class="headerlink" href="#gene-ontology-functional-enrichment-visualization-with-go-plot" title="Permalink to this headline">¶</a></h2>
 <p>Functional enrichment analysis uses statistical approaches to highlight under- or over-represented groups of genes or proteins that belong to specific biological processes.</p>
 <p>Through this plot is possible to explore the gene ontology functional enrichment results, related to human differential gene expression, for the selected comparison (see <a class="reference internal" href="#contrast-dropdown"><span class="std std-ref">Comparison</span></a>). By default, the top 15 significant up (red dots) and down (blue dots) GO categories are shown, ordered by enrichment (dot dimension), for the selected comparison. Statistical significance is represented by color intensity. It is possible to search for specific keywords to filter the results by using the search bar located on top of the plot.</p>
@@ -245,29 +264,29 @@ In any other case, orders, families, or species are plotted instead of human gen
 <p class="admonition-title">Note</p>
 <p>This filtering will also filter the GO table in the same way (see <a class="reference internal" href="#go-table"><span class="std std-ref">GO table</span></a>).</p>
 </div>
-</div>
-</div>
-<div class="section" id="the-dropdowns">
+</section>
+</section>
+<section id="the-dropdowns">
 <h1>The dropdowns<a class="headerlink" href="#the-dropdowns" title="Permalink to this headline">¶</a></h1>
 <p>All the dropdowns are linked to different plots and other dropdowns. In other words, whenever the value of a dropdown changes, some specific elements in the web app will update accordingly.</p>
-<div class="section" id="clustering">
+<section id="clustering">
 <h2>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h2>
 <p>This dropdown represents the transcriptome or metatranscriptome multidimensional scaling used for the two UMAP. By changing this value, it is possible to see how the different samples are clustered according to the whole human transcriptome, virome, bacteriome, archaeome, or eukaryome. Changing the value in this dropdown will only update the two UMAPs, changing the position of the samples on the 2D space of the plot.</p>
-</div>
-<div class="section" id="color-by">
+</section>
+<section id="color-by">
 <span id="color-by-dropdown"></span><h2>Color by<a class="headerlink" href="#color-by" title="Permalink to this headline">¶</a></h2>
 <p>This dropdown will change the metadata that will be used to color the legend controlling the colors of the dots in the metadata UMAP and the boxplots. The metadata that we have collected for TaMMA are both discrete and continuous. Continuous variables, like patient age, will color the dots in the UMAPs but will not plot any boxplot.
 The default value for this dropdown is <strong>Condition</strong> that is the union of <strong>Tissue</strong> and <strong>Group</strong> metadata and these are used in the overall analysis to perform the differential gene expression analysis.</p>
-</div>
-<div class="section" id="expression">
+</section>
+<section id="expression">
 <span id="expression-dropdown"></span><h2>Expression<a class="headerlink" href="#expression" title="Permalink to this headline">¶</a></h2>
 <p>By changing this dropdown, you can select which expression/abundance matrix you want to use for plotting the expression UMAP and the box plots. By selecting <strong>Human</strong>, only the expression levels for human genes are used, while by selecting the other options you can see the abundance levels of the different metatranscriptome components (Archaea, Bacteria, Eukaryota, Viruses) by three classification levels (orders, families, and species).</p>
-</div>
-<div class="section" id="host-gene-order-family-species">
+</section>
+<section id="host-gene-order-family-species">
 <span id="gene-species-dropdown"></span><h2>Host gene/Order/Family/Species<a class="headerlink" href="#host-gene-order-family-species" title="Permalink to this headline">¶</a></h2>
 <p>This dropdown can contain different elements, depending on the expression dropdown value:</p>
 <ul class="simple">
-<li><p>Human: will contain 55,478 unique human genes (<a class="reference external" href="https://www.gencodegenes.org/">GENCODE v35 gene annotations</a>).</p></li>
+<li><p>Human: will contain 55,478 unique human genes (<a class="reference external" href="https://www.gencodegenes.org/">GENCODE v35 gene annotations</a>)</p></li>
 <li><p>Archaea by… : will contain only archaeal orders/families/species, depending on the selected classification level</p></li>
 <li><p>Bacteria by… : will contain only bacterial orders/families/species</p></li>
 <li><p>Eukaryota by… : will contain only eukaryotic orders/families/species</p></li>
@@ -277,53 +296,50 @@ The default value for this dropdown is <strong>Condition</strong> that is the un
 <p class="admonition-title">Note</p>
 <p>The selected element will be used to color the samples in the expression UMAP, for the boxplots, and will be highlighted in the MA plot.</p>
 </div>
-</div>
-<div class="section" id="tissue">
-<h2>Tissue<a class="headerlink" href="#tissue" title="Permalink to this headline">¶</a></h2>
-<p>This dropdown is used to filter the following dropdown (Comparison) by a given tissue.</p>
-</div>
-<div class="section" id="comparison">
+</section>
+<section id="filter-comparison-by">
+<h2>Filter comparison by<a class="headerlink" href="#filter-comparison-by" title="Permalink to this headline">¶</a></h2>
+<p>This dropdown is used to filter the following dropdown (Comparison). It is possible to filter for tissue or fro group (disease) or to not filter at all.</p>
+</section>
+<section id="comparison">
 <span id="contrast-dropdown"></span><h2>Comparison<a class="headerlink" href="#comparison" title="Permalink to this headline">¶</a></h2>
-<p>This dropdown selects the comparison used for the differential gene expression results and the resulting gene ontology enrichment analysis. Thus, changing this dropdown will update both MA and GO plots, and their relative tables. The comparison follows the scheme of <strong>Tissue Group A vs Tissue Group B</strong>. As mentioned before, the comparisons can be filtered by <strong>Tissue</strong>.</p>
+<p>This dropdown selects the comparison used for the differential gene expression results and the resulting gene ontology enrichment analysis. Thus, changing this dropdown will update both MA and GO plots, and their relative tables. The comparison follows the scheme of <strong>Tissue Group A vs Tissue Group B</strong>. As mentioned before, the comparisons can be filtered by the precent dropdown.
+There are two types of different comparisons:</p>
+<ul class="simple">
+<li><p>Same tissue, different group, filtering by tissue will show only these contrast with the specific tissue selected</p></li>
+<li><p>Same group, different tissue, filtering by group will show only these contrast with the specific group selected</p></li>
+</ul>
+<p>It is always possible to search manually by writing inside the dropdown.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>On the left of the legend, there is a <strong>Comparison only</strong> switch which automatically selects the two conditions in the <strong>Comparison</strong> dropdown (Condition1 vs Condition2). If you activate this switch while the selected metadata is not <strong>Condition</strong>, the dropdown value will be changed too.
 While the switch is active, changing the <strong>Comparison</strong> dropdown will also change the selected legend items accordingly, expediting the focus on the specific contrast by filtering simultaneously metadata UMAP and box plots.
 If you select another condition in the legend while the switch is on and then you update the plots, the switch will be turned off. If you manually turn it off, all the conditions will be automatically selected again.</p>
 </div>
-</div>
-<div class="section" id="fdr">
+</section>
+<section id="fdr">
 <span id="stringecy-dropdown"></span><h2>FDR<a class="headerlink" href="#fdr" title="Permalink to this headline">¶</a></h2>
 <p>This parameter is used to control the stringency of the differential gene expression analysis and will affect the number of significant differentially expressed genes (colored dots) in the MA plot and the DGE table (colored rows).</p>
-</div>
-</div>
-<div class="section" id="the-tabs">
+</section>
+</section>
+<section id="the-tabs">
 <h1>The tabs<a class="headerlink" href="#the-tabs" title="Permalink to this headline">¶</a></h1>
 <p>In the bottom part of the web app, there are several tabs with other secondary content, spacing from plots, links, images to exportable tables.</p>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<section id="summary-and-metadata">
+<span id="id1"></span><h2>Summary and metadata<a class="headerlink" href="#summary-and-metadata" title="Permalink to this headline">¶</a></h2>
 <p>In this tab, a schematic representation of the analysis workflow is shown.
-The sankey plot is used to display the relationships between the samples and their metadata. By hovering the mouse on a specific location it is possible to see the number of samples having that feature, for example the <em>CD</em> metadata and the <em>Ileum</em> metadata are present in 1,380 samples.</p>
-</div>
-<div class="section" id="metadata">
-<span id="id1"></span><h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
-<p>In this tab, there is the full metadata table used to populate the <a class="reference internal" href="#color-by-dropdown"><span class="std std-ref">Color by</span></a> plus other info like, for example, the GSE link to the specific study on <a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/">NCBI GEO</a>. The table has native sorting and filtering (by exact match) interactivity options.</p>
-</div>
-<div class="section" id="box-plots">
-<span id="multiboxplots-tab"></span><h2>Box plots<a class="headerlink" href="#box-plots" title="Permalink to this headline">¶</a></h2>
-<p>In this tab, you can easily plot many series of box plots of different features depending on the <a class="reference internal" href="#expression-dropdown"><span class="std std-ref">Expression</span></a> (human genes if <strong>Human</strong> is selected, or orders/families/species if another value is selected). For performance and usability reasons, it is possible to plot up to 10 elements at a time.
-To select the elements to plot, you have two different options:</p>
+The sankey plot is used to display the relationships between the samples and their metadata. By hovering the mouse on a specific location it is possible to see the number of samples having that feature, for example the <em>CD</em> metadata and the <em>Ileum</em> metadata are present in 1,380 samples.
+Below, there is the full metadata table used to populate the <a class="reference internal" href="#color-by-dropdown"><span class="std std-ref">Color by</span></a> plus other info like, for example, the GSE link to the specific study on <a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/">NCBI GEO</a>. The table has native sorting and filtering (by exact match) interactivity options.</p>
+</section>
+<section id="differential-analysis">
+<h2>Differential analysis<a class="headerlink" href="#differential-analysis" title="Permalink to this headline">¶</a></h2>
+<p>This tab have two different sub-tabs:</p>
 <ul class="simple">
-<li><p>search and manually select within the dropdown one element at time</p></li>
-<li><p>search many elements in one click by using the text area below the dropdown</p></li>
+<li><p>DGE table</p></li>
+<li><p>GO table</p></li>
 </ul>
-<p>The search area is flexible. It is case-insensitive and you can provide genes separated by whitespaces, commas, or semicolons. For other elements, it is still case-insensitive but you need to put one item per line. If one or more elements are not found, a message will appear below it indicating missing matches. In these cases, we invite you to check for spelling errors, typos, or to directly search in the dropdown.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Like for <a class="reference internal" href="#boxplots"><span class="std std-ref">Single feature expression/abundance visualization with Box plots</span></a>, while the selected metadata dropdown value (see <a class="reference internal" href="#color-by-dropdown"><span class="std std-ref">Color by</span></a>) is <strong>Condition</strong>, it is possible to group, the box plots by condition using the appropriate switch that is located below the search button. If the selected metadata is not <strong>Condition</strong>, it will not be possible to use this feature.</p>
-</div>
-</div>
-<div class="section" id="dge-table">
+</section>
+<section id="dge-table">
 <span id="id2"></span><h2>DGE table<a class="headerlink" href="#dge-table" title="Permalink to this headline">¶</a></h2>
 <p>In this tab, you can explore the differential gene expression or order/family/species abundance (depending on the <a class="reference internal" href="#expression-dropdown"><span class="std std-ref">Expression</span></a> dropdown) results. Statistically significant features (see <a class="reference internal" href="#stringecy-dropdown"><span class="std std-ref">FDR</span></a> for stringency details) are highlighted by colored rows; red for upregulated genes or overepresented orders/families/species, blue for downregulated genes or underrepresented orders/families/species in respect to the selected comparison (see <a class="reference internal" href="#contrast-dropdown"><span class="std std-ref">Comparison</span></a>). The table natively supports the sorting of columns values.</p>
 <p>For each row in the table, there is a number of links to external resources:</p>
@@ -339,29 +355,33 @@ To select the elements to plot, you have two different options:</p>
 <p>It is possible to easily download both the full and filtered tables by clicking on the respective download buttons.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Similar to <a class="reference internal" href="#ma-plot"><span class="std std-ref">Differential expression/abundance visualization with MA plot</span></a>, clicking on a Gene/Order/Family/Species cell will change the selected element in the right dropdown (see <a class="reference internal" href="#gene-species-dropdown"><span class="std std-ref">Host gene/Order/Family/Species</span></a>), thus updating all the relevant plots.</p>
+<p>Similar to <a class="reference internal" href="#ma-plot"><span class="std std-ref">Differential expression/abundance visualization with MA plot</span></a>, clicking on a Gene/Order/Family/Species cell in the table will change the selected element in the right dropdown (see <a class="reference internal" href="#gene-species-dropdown"><span class="std std-ref">Host gene/Order/Family/Species</span></a>), thus updating all the relevant plots.</p>
 </div>
-</div>
-<div class="section" id="go-table">
+</section>
+<section id="go-table">
 <span id="id3"></span><h2>GO table<a class="headerlink" href="#go-table" title="Permalink to this headline">¶</a></h2>
 <p>Here, the gene ontology functional enrichement analysis results are shown, for the selected comparison (see <a class="reference internal" href="#contrast-dropdown"><span class="std std-ref">Comparison</span></a>), with an FDR &lt; 1e-10. As for genes in the <a class="reference internal" href="#dge-table"><span class="std std-ref">DGE table</span></a>, statistically significant GO categories are highlighted by colored rows, with red and blue rows representing up- or down-regulated biological processes, respectively. The table natively support sorting of columns values. Each GO ID is a link to the respective GO category within the <a class="reference external" href="http://amigo.geneontology.org/amigo">AmiGO</a> website.</p>
 <p>As explained in the <a class="reference internal" href="#go-table"><span class="std std-ref">GO table</span></a>, this table can be filtered using the GO plot keyword search bar: the GO categories plotted will be those displayed in the table. You can easily download both the full or the filtered table using the download buttons.</p>
-</div>
-<div class="section" id="literature">
-<h2>Literature<a class="headerlink" href="#literature" title="Permalink to this headline">¶</a></h2>
-<p>Here, we collected a series of previous scientific evidence that is validated in TaMMA. The plots here are not related to any of the dropdowns on the top of the website and are not interactive.</p>
-</div>
-</div>
-<div class="section" id="the-data-behind-it">
+</section>
+<section id="insights">
+<h2>Insights<a class="headerlink" href="#insights" title="Permalink to this headline">¶</a></h2>
+<p>Here, we collected a series of previous scientific evidence that is validated in TaMMA and also new evidence found using TaMMA. These two categories are collected in two relative sub-tabs, “Old evidence from the literature confirmed by TaMMA” and “New evidence by TaMMA”. The plots here are not related to any of the dropdowns on the top of the website and are not interactive.</p>
+</section>
+</section>
+<section id="the-data-behind-it">
 <h1>The data behind it<a class="headerlink" href="#the-data-behind-it" title="Permalink to this headline">¶</a></h1>
-<p>The complete list of raw data analyzed can be fount in the <a class="reference internal" href="#metadata"><span class="std std-ref">Metadata</span></a> tab.</p>
+<p>The complete list of raw data analyzed, with the associated metadata, can be fount in the <a class="reference internal" href="#summary-and-metadata"><span class="std std-ref">Summary and metadata</span></a> tab.</p>
 <p>The result tables used for the plots are stored in <a class="reference external" href="https://github.com/Humanitas-Danese-s-omics/ibd-meta-analysis-data">GitHub</a>.</p>
 <p>NGS dark matter mentioned in the manuscript are stored in <a class="reference external" href="https://dataverse.harvard.edu/dataverse/tamma-dark-matter">Harvard Dataverse</a></p>
-</div>
-<div class="section" id="report-a-bug">
-<h1>Report a bug<a class="headerlink" href="#report-a-bug" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="report-a-bug-suggestions-and-feature-requests">
+<h1>Report a bug, suggestions and feature requests<a class="headerlink" href="#report-a-bug-suggestions-and-feature-requests" title="Permalink to this headline">¶</a></h1>
 <p>Found a bug or simple have a feature request to improve TaMMA? Please tell us <a class="reference external" href="https://github.com/Humanitas-Danese-s-omics/ibd-meta-analysis-data/issues">here</a>.</p>
-</div>
+</section>
+<section id="future-development">
+<h1>Future development<a class="headerlink" href="#future-development" title="Permalink to this headline">¶</a></h1>
+<p>In the future, as new datasets will be published, we will update TaMMA by adding these as soon as possible. Also, in the future, metagenomic data will be integrated in the platform.</p>
+</section>
 
 
            </div>
